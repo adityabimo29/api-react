@@ -17,7 +17,7 @@ import Navbaria from './components/Navbar';
 
 class App extends Component {
 
- 
+    
     
     render(){
         

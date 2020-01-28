@@ -29,6 +29,7 @@ function Login(props) {
         else if(user.email === dbUser.email && user.pass === dbUser.pass ){
             localStorage.setItem('status',true);
             props.history.push('/api');
+            window.location.reload();
         }else{
             alert('password incorrect');
         }
