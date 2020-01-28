@@ -1,48 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     Redirect
 } from "react-router-dom";
+
 
 import Home from './pages/Home';
 import About from './pages/About';
 import Todo from './Todo';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Poke from './pages/Poke';
+import Navbaria from './components/Navbar';
 
-function App() {
+class App extends Component {
 
-    const isLogin = localStorage.getItem('user');
+ 
+    
+    render(){
+        
+        const isLogin = localStorage.getItem('status')
 
-    return (
-        <div>
-            <Router>
-                <Link to='/'>Home</Link>
-                <Link to='/About'>About</Link>
-                <Link to='/Todo'>Todo</Link>
-                <Link to='/login'>Login</Link>
-                <Link to='/register'>Register</Link>
-                <Switch>
-                    <Route path='/' exact component={Home} />
-                    <Route path='/About'>
-                        {isLogin ? <About />  : <Redirect to="/" />}
-                    </Route>
-                    <Route path='/Todo'>
-                        {isLogin ? <Todo />  : <Redirect to="/" />}
-                    </Route>
-                    <Route  path='/Login'>
-                        <Login />
-                    </Route>
-                    <Route  path='/Register'>
-                        <Register />
-                    </Route>
-                </Switch>
-            </Router>
-            
-        </div>
-    )
+        return (
+            <div>
+                <Router>
+                    <Navbaria />
+                    <Switch>
+                        <Route path='/' exact component={Home} />
+                        <Route path='/About'>
+                            {isLogin ? <About />  : <Redirect to="/login" />}
+                        </Route>
+                        <Route path='/Todo'>
+                            {isLogin ? <Todo />  : <Redirect to="/login" />}
+                        </Route>
+                        <Route path='/Api'>
+                            {isLogin ? <Poke />  : <Redirect to="/login" />}
+                        </Route>
+                        <Route  path='/Login'>
+                            <Login />
+                        </Route>
+                        <Route  path='/Register'>
+                            <Register />
+                        </Route>
+                    </Switch>
+                </Router>
+                
+            </div>
+        )
+    }
 }
 export default App;
