@@ -51,7 +51,7 @@ export default class Poke extends Component {
             name:name,
         })
         .then(response => {
-                console.log(response);
+                //console.log(response);
                 this.fetchData();
             })
         .then(error => {
@@ -74,7 +74,7 @@ export default class Poke extends Component {
             alert("Sukses di Inputkan");
             this.setState({name:''})
             this.fetchData()
-            console.log(response);
+            //console.log(response);
         })
         .then(error => {
             console.log(error)

@@ -1,7 +1,7 @@
 import React from 'react'
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, Button
+    CardTitle, Button,Row,Col
   } from 'reactstrap';
 
 export default function Cardy(props) {
@@ -13,8 +13,16 @@ export default function Cardy(props) {
             <CardBody>
             <CardTitle className='text-center'>{name}</CardTitle>
             <CardText className='text-center'>Your ID is : {id}</CardText>
-            <Button onClick={handlePut} id={id}  className='mr-2'>Edit</Button>
-            <Button onClick={handleDelete} id={id} >Delete</Button>
+            <Row>
+                <Col md={6}>
+                <Button color="warning" onClick={handlePut} id={id}  className='btn-block'>Edit</Button>
+                </Col>
+                <Col md={6}>
+                <Button color="danger" onClick={handleDelete} id={id} className='btn-block' >Delete</Button>
+                </Col>
+            </Row>
+            
+            
             </CardBody>
         </Card>
     )
