@@ -34,8 +34,12 @@ export default class Poke extends Component {
     fetchData() {
         axios.get('https://5e2fe92f9c29c900145db5c1.mockapi.io/testpost')
         .then(res => {
+            if(res.status === 200){
             const data =  res.data ;
             this.setState({data:data,isLoading:false});
+            }else{
+                console.log('Something is wrong with that status data');
+            }
         })
     }
 
@@ -120,7 +124,7 @@ export default class Poke extends Component {
                     <CardList handlePut={this.handlePut} handleDelete={this.handleDelete} data={data} />
                 </Row>
             </Fragment>
-            ) : (<p>Loading</p>)
+            ) : (<p className='text-center'>Loading</p>)
             }
             </Container>
         )
