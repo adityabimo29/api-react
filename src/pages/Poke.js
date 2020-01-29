@@ -12,7 +12,7 @@ export default class Poke extends Component {
             data:'',
             isLoading:true,
             name:'',
-            avatar:'https://avatars3.githubusercontent.com/u/6480022?s=400&v=4'
+            avatar:''
         }
 
     }
@@ -40,15 +40,22 @@ export default class Poke extends Component {
     }
 
     handleChange = e => {
-        this.setState({name:e.target.value});
+
+        if(e.target.name === 'name'){
+            this.setState({name:e.target.value});
+        }else{
+            this.setState({avatar:e.target.value});
+        }
+        
     }
 
     handlePut = e => {
 
-        const name = prompt();
+        const name = prompt('Name');
+        const avatar= prompt('Url Avatar');
 
         axios.put(`https://5e2fe92f9c29c900145db5c1.mockapi.io/testpost/${e.target.id}`, {
-            name:name,
+            name:name,avatar:avatar
         })
         .then(response => {
                 //console.log(response);
@@ -72,7 +79,7 @@ export default class Poke extends Component {
         })
         .then(response => {
             alert("Sukses di Inputkan");
-            this.setState({name:''})
+            this.setState({name:'',avatar:''})
             this.fetchData()
             //console.log(response);
         })
@@ -95,7 +102,16 @@ export default class Poke extends Component {
                     <Col md={{size:6,offset:3}}>
                     <h1 className='text-center alert alert-info '>SIMPLE API with AXIOS</h1>
                         <form onSubmit={this.handlePost} className='mt-4'>
-                        <input className='form-control' type='text' name='name' value={this.state.name} onChange={this.handleChange} />
+                        <Row>
+                            <Col md={6}>
+                            <input className='form-control' type='text' name='name' value={this.state.name} onChange={this.handleChange} placeholder='name' />
+                            </Col>
+                            <Col md={6}>
+                            <input className='form-control' type='text' name='avatar' value={this.state.avatar} onChange={this.handleChange} placeholder='url image' />
+                            </Col>
+                        </Row>
+                        
+                        
                         <button className='btn btn-success btn-block mt-2' type="submit">POST</button>
                         </form>
                     </Col>
