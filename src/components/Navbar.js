@@ -21,6 +21,7 @@ function Navbaria(props) {
     const isLogout = () => {
         localStorage.removeItem('status');
         props.history.push('/login');
+        window.location.reload();
     }
 
     return (
