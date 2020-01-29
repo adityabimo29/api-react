@@ -12,7 +12,7 @@ import About from './pages/About';
 import Todo from './Todo';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Poke from './pages/Poke';
+import Poke from './pages/Api';
 import Navbaria from './components/Navbar';
 
 class App extends Component {

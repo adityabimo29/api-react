@@ -19,8 +19,6 @@ const Modalia = (props) => {
 
   const toggle = () => setModal(!modal);
 
-
-
   return (
     <div>
       <Button color="info" onClick={toggle}>V</Button>
