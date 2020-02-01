@@ -3,7 +3,7 @@ import {Col} from 'reactstrap';
 import Cardy from './Card';
 
 export default function CardList(props) {
-    const {data,handleDelete,handlePut} = props;
+    const {data,handleDelete,handlePut,total} = props;
     
     return (
         <Fragment>
@@ -12,7 +12,7 @@ export default function CardList(props) {
             data.map( (item) => {
                 return(
                     <Col md={3} key={item.id}>
-                        <Cardy handlePut={handlePut} handleDelete={handleDelete}  id={item.id} name={item.name} avatar={item.avatar} />
+                        <Cardy total={total} handlePut={handlePut} handleDelete={handleDelete}  id={item.id} name={item.name} avatar={item.avatar} />
                     </Col>
                 )
             })

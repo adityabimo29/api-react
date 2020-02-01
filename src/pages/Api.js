@@ -20,8 +20,6 @@ export default function Api(props) {
         fetchData();
     },[total]);
 
-    
-
 
     const fetchData = () => {
         axios.get('https://5e2fe92f9c29c900145db5c1.mockapi.io/testpost')
@@ -63,6 +61,7 @@ export default function Api(props) {
         .then(error => {
                 console.log(error)
             })
+        e.preventDefault();
     }
 
     const handleDelete = e => {
@@ -114,7 +113,7 @@ export default function Api(props) {
                     </Col>
                 </Row>
                 <Row>
-                    <CardList handlePut={handlePut} handleDelete={handleDelete} data={data} />
+                    <CardList total={total} handlePut={handlePut} handleDelete={handleDelete} data={data} />
                 </Row>
             </Fragment>
             ) : (<p className='text-center'>Loading</p>)
